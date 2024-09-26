@@ -9,7 +9,6 @@ API Endpoints:
 GET all cocktails: http://localhost:3000/cocktails
 GET a specific cocktail: http://localhost:3000/cocktails/:id
 
-
 //Run the Tests: You can run the tests using the following command: npx jest
 // PASS  src/index.test.js
 // ✓ createRamenImage should create an img element (8 ms)
