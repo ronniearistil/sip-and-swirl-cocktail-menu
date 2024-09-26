@@ -1,0 +1,74 @@
+{
+  "cocktails": [
+    {
+      "id": 1,
+      "name": "Margarita",
+      "ingredients": ["Tequila", "Triple Sec", "Lime Juice", "Salt"],
+      "image": "https://example.com/margarita.jpg",
+      "recipe": "Shake all ingredients with ice and strain into a salt-rimmed glass."
+    },
+    {
+      "id": 2,
+      "name": "Mojito",
+      "ingredients": ["White Rum", "Sugar", "Lime Juice", "Soda Water", "Mint"],
+      "image": "https://example.com/mojito.jpg",
+      "recipe": "Muddle mint leaves with sugar and lime juice, then add rum and top with soda water."
+    },
+    {
+      "id": 3,
+      "name": "Old Fashioned",
+      "ingredients": ["Bourbon", "Sugar", "Bitters", "Orange Twist"],
+      "image": "https://example.com/old-fashioned.jpg",
+      "recipe": "Stir all ingredients with ice and garnish with an orange twist."
+    },
+    {
+      "id": 4,
+      "name": "Cosmopolitan",
+      "ingredients": ["Vodka", "Triple Sec", "Cranberry Juice", "Lime Juice"],
+      "image": "https://example.com/cosmopolitan.jpg",
+      "recipe": "Shake ingredients with ice and strain into a chilled glass."
+    },
+    {
+      "id": 5,
+      "name": "Whiskey Sour",
+      "ingredients": ["Whiskey", "Lemon Juice", "Simple Syrup", "Egg White"],
+      "image": "https://example.com/whiskey-sour.jpg",
+      "recipe": "Shake ingredients with ice and strain into a glass. Optionally garnish with a cherry."
+    },
+    {
+      "id": 6,
+      "name": "Pina Colada",
+      "ingredients": ["Rum", "Coconut Cream", "Pineapple Juice"],
+      "image": "https://example.com/pina-colada.jpg",
+      "recipe": "Blend all ingredients with ice until smooth."
+    },
+    {
+      "id": 7,
+      "name": "Mai Tai",
+      "ingredients": ["Dark Rum", "Light Rum", "Lime Juice", "Orgeat Syrup", "Orange Curacao"],
+      "image": "https://example.com/mai-tai.jpg",
+      "recipe": "Shake all ingredients with ice and strain into a glass filled with crushed ice."
+    },
+    {
+      "id": 8,
+      "name": "Negroni",
+      "ingredients": ["Gin", "Campari", "Sweet Vermouth"],
+      "image": "https://example.com/negroni.jpg",
+      "recipe": "Stir ingredients with ice and strain into a glass with an orange slice."
+    },
+    {
+      "id": 9,
+      "name": "Daiquiri",
+      "ingredients": ["White Rum", "Lime Juice", "Simple Syrup"],
+      "image": "https://example.com/daiquiri.jpg",
+      "recipe": "Shake all ingredients with ice and strain into a chilled glass."
+    },
+    {
+      "id": 10,
+      "name": "Manhattan",
+      "ingredients": ["Rye Whiskey", "Sweet Vermouth", "Angostura Bitters"],
+      "image": "https://example.com/manhattan.jpg",
+      "recipe": "Stir ingredients with ice and strain into a chilled glass. Garnish with a cherry."
+    }
+  ]
+}

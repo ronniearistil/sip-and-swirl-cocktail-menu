@@ -1,0 +1,17 @@
+<!-- How to Use This db.json:
+Replace your existing db.json with this content or create a new db.json file in your project folder.
+Start the json-server:
+bash
+Copy code
+json-server --watch db.json --port 3000
+This will serve the cocktail data at http://localhost:3000/cocktails.
+API Endpoints:
+GET all cocktails: http://localhost:3000/cocktails
+GET a specific cocktail: http://localhost:3000/cocktails/:id
+
+
+//Run the Tests: You can run the tests using the following command: npx jest
+// PASS  src/index.test.js
+// ✓ createRamenImage should create an img element (8 ms)
+// ✓ displayRamens should fetch and display ramen images (10 ms)
+// ✓ handleClick should update the DOM with ramen details (5 ms) -->
