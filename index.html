@@ -1,52 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sip & Swirl Cocktail Menu</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script defer src="index.js"></script>
 </head>
-
 <body>
   <header>
     <h1>Sip & Swirl Cocktail Menu</h1>
   </header>
 
-  <!-- Cocktails Menu -->
-  <div id="cocktail-menu" class="">
+  <!-- Main display box for selected cocktail -->
+  <div id="cocktail-detail" class="main-display">
+    <img class="detail-image" src="./images/default-placeholder.jpg" alt="Cocktail image" />
+    <h2 class="name">Insert Name Here</h2>
+    
+    <button class="ingredient-toggle">See Ingredients</button>
+    <div class="collapsible">
+      <div class="content" style="display: none;">
+        <p id="ingredients-display">Insert Ingredients Here</p>
+      </div>
+    </div>
+
+    <button class="recipe-toggle">See Recipe</button>
+    <div class="recipe-content" style="display: none;">
+      <p id="recipe-display">Insert recipe here</p>
+    </div>
+  </div>
+
+  <!-- Cocktails Menu Grid -->
+  <div id="cocktail-menu" class="grid-container">
     <!-- Cocktail images will be dynamically added here -->
   </div>
 
-  <!-- Cocktail Details Section -->
-  <div id="cocktail-detail">
-    <img class="detail-image" src="./assets/default-placeholder.jpg" alt="Cocktail image" />
-    <h2 class="name">Insert Name Here</h2>
-    <h3 class="ingredients">Ingredients: Insert Ingredients Here</h3>
-    <p id="recipe-display">Insert recipe here</p>
+  <!-- Add and Edit Cocktail Boxes placed adjacent to each other -->
+  <div class="form-section">
+    <form id="new-cocktail" class="form-box">
+      <h4>Add New Cocktail</h4>
+      <input type="text" id="new-name" placeholder="Cocktail Name" required />
+      <input type="text" id="new-ingredients" placeholder="Ingredients (comma separated)" required />
+      <input type="text" id="new-image" placeholder="Image filename (e.g., margarita.jpg)" required />
+      <textarea id="new-recipe" placeholder="Enter the recipe" required></textarea>
+      <input type="submit" value="Create Cocktail" />
+    </form>
+
+    <form id="edit-cocktail" class="form-box">
+      <h4>Edit Cocktail</h4>
+      <input type="text" id="edit-ingredients" placeholder="Edit Ingredients" required />
+      <textarea id="edit-recipe" placeholder="Edit the recipe" required></textarea>
+      <input type="submit" value="Update" />
+    </form>
   </div>
 
-  <!-- Add New Cocktail Form -->
-  <form id="new-cocktail">
-    <h4>Add New Cocktail</h4>
-    <input type="text" id="new-name" placeholder="Cocktail Name" required />
-    <input type="text" id="new-ingredients" placeholder="Ingredients (comma separated)" required />
-    <input type="text" id="new-image" placeholder="Image filename (e.g., margarita.jpg)" required />
-    <textarea id="new-recipe" placeholder="Enter the recipe" required></textarea>
-    <input type="submit" value="Create Cocktail" />
-  </form>
-
-  <!-- Edit Cocktail Form -->
-  <form id="edit-cocktail">
-    <h4>Edit Cocktail</h4>
-    <input type="text" id="edit-ingredients" placeholder="Edit Ingredients" required />
-    <textarea id="edit-recipe" placeholder="Edit the recipe" required></textarea>
-    <input type="submit" value="Update" />
-  </form>
-
-  <button id="delete-button">Delete Cocktail</button>
+  <button id="delete-button" class="delete-button">Delete Cocktail</button>
 </body>
-
 </html>
+
+
+
+
+
 
