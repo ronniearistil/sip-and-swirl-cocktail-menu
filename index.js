@@ -19,7 +19,7 @@ const createCocktailImage = (cocktail) => {
 
 // Function to fetch and display all cocktail images in the #cocktail-menu div
 const displayCocktails = () => {
-  fetch('http://localhost:3000/cocktails')
+  fetch('http://localhost:3000/The cocktails')
     .then(response => response.json())
     .then(cocktails => {
       const cocktailMenu = document.getElementById('cocktail-menu');
