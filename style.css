@@ -1,144 +1,171 @@
-
 /* Basic CSS for Sip & Swirl */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Header Styling */
+  header {
+    background-color: #e91e63;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Menu Styling */
+  #cocktail-menu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  #cocktail-menu img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  #cocktail-menu img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Detail Section Styling */
+  #cocktail-detail {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #cocktail-detail img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .name {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    margin-bottom: 5px;
+  }
+  
+  .ingredients {
+    font-size: 1.2rem;
+    color: #888;
+    margin-bottom: 15px;
+  }
+  
+  #recipe-display {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Form Styling */
+  form {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 300px;
+  }
+  
+  form h4 {
+    margin-bottom: 10px;
+    color: #e91e63;
+  }
+  
+  form input,
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  form textarea {
+    resize: none;
+  }
+  
+  form input[type="submit"] {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1rem;
+  }
+  
+  form input[type="submit"]:hover {
+    background-color: #d81b60;
+  }
+  
+  /* Delete Button Styling */
+  #delete-button {
+    background-color: #e53935;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  #delete-button:hover {
+    background-color: #d32f2f;
+  }
 
-body {
-  background-color: #f5f5f5;
-  color: #333;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Header Styling */
-header {
+  /* Collapsible styles */
+.collapsible h3 {
+  cursor: pointer;
   background-color: #e91e63;
   color: white;
-  padding: 20px;
-  width: 100%;
-  text-align: center;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-/* Menu Styling */
-#cocktail-menu {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-#cocktail-menu img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-#cocktail-menu img:hover {
-  transform: scale(1.1);
-}
-
-/* Detail Section Styling */
-#cocktail-detail {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-#cocktail-detail img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
-
-.name {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.ingredients {
-  font-size: 1.2rem;
-  color: #888;
-  margin-bottom: 15px;
-}
-
-#recipe-display {
-  font-size: 1rem;
-  color: #555;
-}
-
-/* Form Styling */
-form {
-  background-color: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  width: 300px;
-}
-
-form h4 {
-  margin-bottom: 10px;
-  color: #e91e63;
-}
-
-form input,
-form textarea {
-  width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.collapsible .content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background-color: white;
   border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-form textarea {
-  resize: none;
-}
-
-form input[type="submit"] {
-  background-color: #e91e63;
-  color: white;
-  border: none;
   padding: 10px;
-  cursor: pointer;
   border-radius: 5px;
-  width: 100%;
-  font-size: 1rem;
 }
 
-form input[type="submit"]:hover {
-  background-color: #d81b60;
+.collapsible .content p {
+  margin: 0;
 }
 
-/* Delete Button Styling */
-#delete-button {
-  background-color: #e53935;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  width: 100%;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-
-#delete-button:hover {
-  background-color: #d32f2f;
+.collapsible.active .content {
+  max-height: 200px; /* Adjust as needed */
 }
