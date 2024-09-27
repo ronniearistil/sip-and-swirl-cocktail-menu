@@ -1,4 +1,4 @@
-// Core Deliverables
+// MVP Deliverables
 
 // Helper function to create a cocktail image element and add it to the #cocktail-menu
 const createCocktailImage = (cocktail) => {
@@ -32,53 +32,13 @@ const createCocktailImage = (cocktail) => {
       .catch(error => console.error('Error fetching cocktails:', error));
   };
   
-  // This function will display cocktail details when a cocktail image is clicked
-  const handleClick = (cocktail) => {
-    document.querySelector('#cocktail-detail img').src = cocktail.image;
-    document.querySelector('.name').textContent = cocktail.name;
-    document.querySelector('.ingredients').textContent = `Ingredients: ${cocktail.ingredients.join(', ')}`;
-    document.getElementById('recipe-display').textContent = cocktail.recipe;
-  
-    // Set the cocktail ID for edit and delete actions
-    document.getElementById('edit-cocktail').dataset.id = cocktail.id;
-    document.getElementById('delete-button').dataset.id = cocktail.id;
-  };
-  
-  // Function to handle the submission of a new cocktail
-  const addSubmitListener = () => {
-    const form = document.getElementById('new-cocktail');
-  
-    form.addEventListener('submit', (event) => {
-      event.preventDefault(); // Prevent form reload
-  
-      // Create a new cocktail object from form inputs
-      const newCocktail = {
-        name: document.getElementById('new-name').value,
-        ingredients: document.getElementById('new-ingredients').value.split(', '),
-        image: document.getElementById('new-image').value,
-        recipe: document.getElementById('new-recipe').value,
-      };
-  
-      // Ensure all fields are filled out
-      if (!newCocktail.name || !newCocktail.ingredients || !newCocktail.image || !newCocktail.recipe) {
-        alert("Please fill out all fields.");
-        return;
-      }
-  
-      // Add the new cocktail image to the menu
-      createCocktailImage(newCocktail);
-      form.reset(); // Clear the form
-    });
-  };
-  
   // Main function to initialize core deliverables
   const main = () => {
     displayCocktails();
-    addSubmitListener();
   };
   
   // Ensure that the DOM is fully loaded before running the main function
-  document.addEventListener('DOMContentLoaded', main);  
+  document.addEventListener('DOMContentLoaded', main);
   
   
   // Advanced Deliverables
