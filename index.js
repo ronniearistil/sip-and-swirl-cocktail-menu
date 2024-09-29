@@ -190,6 +190,4 @@ const main = () => {
 
 // Ensure that the DOM is fully loaded before running the main function
 document.addEventListener('DOMContentLoaded', main);
-
-  
   
