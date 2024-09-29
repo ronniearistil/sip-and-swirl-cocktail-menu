@@ -35,11 +35,11 @@
 
   <!-- Add and Edit Cocktail Boxes placed adjacent to each other -->
   <div class="form-section">
-    <form id="new-cocktail" class="form-box">
+    <form id="new-cocktail" class="form-box" enctype="multipart/form-data">
       <h4>Add New Cocktail</h4>
       <input type="text" id="new-name" placeholder="Cocktail Name" required />
       <input type="text" id="new-ingredients" placeholder="Ingredients (comma separated)" required />
-      <input type="text" id="new-image" placeholder="Image filename (e.g., margarita.jpg)" required />
+      <input type="file" id="new-image" accept="image/*" required />
       <textarea id="new-recipe" placeholder="Enter the recipe" required></textarea>
       <input type="submit" value="Create Cocktail" />
     </form>

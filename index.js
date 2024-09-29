@@ -1,4 +1,4 @@
-// MVP Ddeliverables
+// MVP Deliverables
 // Helper function to create a cocktail image element and add it to the #cocktail-menu
 const createCocktailImage = (cocktail) => {
   const img = document.createElement('img');
@@ -106,11 +106,24 @@ const addSubmitListener = () => {
   form.addEventListener('submit', (event) => {
     event.preventDefault(); // Prevent page reload
 
+    // Get ingredients input and split by new lines (using '\n') to handle multi-line input
+    const rawIngredients = document.getElementById('new-ingredients').value.split('\n');
+    const ingredients = rawIngredients.map(ingredientString => {
+      const firstSpaceIndex = ingredientString.indexOf(' '); // Find the first space
+      const amount = ingredientString.slice(0, firstSpaceIndex); // Get everything before the first space
+      const name = ingredientString.slice(firstSpaceIndex + 1); // Get everything after the first space
+      return { name, amount };
+    });
+
+    // Get the file input and create an object URL for the image
+    const imageFile = document.getElementById('new-image').files[0];
+    const imageUrl = URL.createObjectURL(imageFile);
+
     // Create a new cocktail object
     const newCocktail = {
       name: document.getElementById('new-name').value,
-      ingredients: document.getElementById('new-ingredients').value.split(', '),
-      image: document.getElementById('new-image').value,
+      ingredients: ingredients, // Use the structured ingredients array
+      image: imageUrl, // Use the object URL as the image source
       recipe: document.getElementById('new-recipe').value,
     };
 
