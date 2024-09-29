@@ -1,17 +1,18 @@
+// MVP Ddeliverables
 // Helper function to create a cocktail image element and add it to the #cocktail-menu
 const createCocktailImage = (cocktail) => {
   const img = document.createElement('img');
-  img.src = cocktail.image; // Use full URL from the JSON data
-  img.alt = cocktail.name; // Set alt attribute to the cocktail name
+  img.src = cocktail.image; // Use image path from JSON data
+  img.alt = cocktail.name; // Set alt attribute to cocktail name
   
   // Add a click event listener to show cocktail details when clicked
   img.addEventListener('click', () => handleClick(cocktail));
-  
-  // Append the cocktail image to the #cocktail-menu div
+
+  // Append the cocktail image to a grid box and then to the #cocktail-menu div
   const cocktailBox = document.createElement('div');
   cocktailBox.classList.add('cocktail-box');
   cocktailBox.appendChild(img);
-  
+
   document.getElementById('cocktail-menu').appendChild(cocktailBox);
 };
 
@@ -22,10 +23,10 @@ const displayCocktails = () => {
     .then(cocktails => {
       const cocktailMenu = document.getElementById('cocktail-menu');
       cocktailMenu.innerHTML = ''; // Clear the menu
-
+    
       // Loop through each cocktail and create images for them
       cocktails.forEach(cocktail => createCocktailImage(cocktail));
-
+    
       // Automatically display the first cocktail's details
       if (cocktails.length > 0) {
         handleClick(cocktails[0]);
@@ -34,53 +35,43 @@ const displayCocktails = () => {
     .catch(error => console.error('Error fetching cocktails:', error));
 };
 
-// Function to display cocktail details when clicked
+// Function to display cocktail details when a cocktail image is clicked
 const handleClick = (cocktail) => {
   document.querySelector('#cocktail-detail img').src = cocktail.image;
   document.querySelector('.name').textContent = cocktail.name;
 
-  // Format the ingredients by combining amount and ingredient name
+  // Combine ingredients and display them
   const ingredientsList = cocktail.ingredients.map(item => `${item.amount} ${item.name}`).join(', ');
   document.getElementById('ingredients-display').textContent = ingredientsList;
-  
+
+  // Display the recipe
   document.getElementById('recipe-display').textContent = cocktail.recipe;
 
   // Set the cocktail ID for edit and delete actions
   document.getElementById('edit-cocktail').dataset.id = cocktail.id;
   document.getElementById('delete-button').dataset.id = cocktail.id;
 
-  // Reset toggle state to ensure correct button visibility
+  // Reset toggle states for ingredients and recipe buttons
   resetToggles();
-
-  // Add magnification effect on click
-  const mainDisplay = document.querySelector('.main-display');
-  mainDisplay.classList.add('magnify');
-
-  // Optional: Reset the magnification after a few seconds
-  setTimeout(() => {
-    mainDisplay.classList.remove('magnify');
-  }, 3000); // 3 seconds zoom-in effect
 };
 
-// Function to reset toggle buttons to their initial state
+// Function to reset toggle buttons for ingredients and recipe sections
 const resetToggles = () => {
   const ingredientsDiv = document.querySelector('.ingredients-content');
   const recipeDiv = document.querySelector('.recipe-content');
-  
-  // Hide both content areas initially
-  ingredientsDiv.style.display = 'none';
-  recipeDiv.style.display = 'none';
 
-  // Reset buttons to "See" state
-  document.querySelector('.ingredient-toggle').textContent = 'See Ingredients';
-  document.querySelector('.recipe-toggle').textContent = 'See Recipe';
+  ingredientsDiv.style.display = 'none'; // Hide ingredients initially
+  recipeDiv.style.display = 'none'; // Hide recipe initially
+
+  document.querySelector('.ingredient-toggle').textContent = 'See Ingredients'; // Reset button text
+  document.querySelector('.recipe-toggle').textContent = 'See Recipe'; // Reset button text
 };
 
 // Function to toggle between "See Ingredients" and "Hide Ingredients"
 const setupIngredientToggle = () => {
   const button = document.querySelector('.ingredient-toggle');
   const ingredientsDiv = document.querySelector('.ingredients-content');
-  
+
   button.addEventListener('click', () => {
     if (ingredientsDiv.style.display === 'none' || !ingredientsDiv.style.display) {
       ingredientsDiv.style.display = 'block';
@@ -96,7 +87,7 @@ const setupIngredientToggle = () => {
 const setupRecipeToggle = () => {
   const button = document.querySelector('.recipe-toggle');
   const recipeDiv = document.querySelector('.recipe-content');
-  
+
   button.addEventListener('click', () => {
     if (recipeDiv.style.display === 'none' || !recipeDiv.style.display) {
       recipeDiv.style.display = 'block';
@@ -108,14 +99,14 @@ const setupRecipeToggle = () => {
   });
 };
 
-// Function to handle the submission of a new cocktail
+// Function to handle adding a new cocktail
 const addSubmitListener = () => {
   const form = document.getElementById('new-cocktail');
-  
-  form.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent form reload
 
-    // Create a new cocktail object from form inputs
+  form.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent page reload
+
+    // Create a new cocktail object
     const newCocktail = {
       name: document.getElementById('new-name').value,
       ingredients: document.getElementById('new-ingredients').value.split(', '),
@@ -138,12 +129,12 @@ const addSubmitListener = () => {
 // Function to handle editing a cocktail's recipe and ingredients (non-persisted)
 const setupEditListener = () => {
   const form = document.getElementById('edit-cocktail');
-  
+
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const cocktailId = form.dataset.id;
 
-    // Update the displayed cocktail details in the DOM with new recipe and ingredients
+    // Update the displayed cocktail details in the DOM
     const newRecipe = document.getElementById('edit-recipe').value;
     const newIngredients = document.getElementById('edit-ingredients').value.split(', ');
 
@@ -154,14 +145,15 @@ const setupEditListener = () => {
   });
 };
 
-// Function to handle deleting a cocktail (non-persisted)
+// *** STRETCH GOAL: Function to handle deleting a cocktail (non-persisted) ***
+// Function to handle deleting a cocktail
 const setupDeleteListener = () => {
   const deleteButton = document.getElementById('delete-button');
-  
+
   deleteButton.addEventListener('click', () => {
     const cocktailName = document.querySelector('.name').textContent;
 
-    // Remove the cocktail image from the menu
+    // Remove the cocktail from the DOM
     const cocktailMenu = document.getElementById('cocktail-menu');
     const cocktailImages = cocktailMenu.getElementsByTagName('img');
     for (let img of cocktailImages) {
@@ -170,11 +162,14 @@ const setupDeleteListener = () => {
         break;
       }
     }
+
     // Clear the cocktail details section
     document.querySelector('#cocktail-detail img').src = './images/default-placeholder.jpg';
     document.querySelector('.name').textContent = 'Insert Name Here';
     document.getElementById('ingredients-display').textContent = 'Insert Ingredients Here';
     document.getElementById('recipe-display').textContent = 'Insert recipe here';
+
+    alert("Cocktail deleted successfully!");
   });
 };
 
@@ -190,4 +185,3 @@ const main = () => {
 
 // Ensure that the DOM is fully loaded before running the main function
 document.addEventListener('DOMContentLoaded', main);
-  

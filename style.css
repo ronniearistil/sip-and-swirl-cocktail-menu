@@ -29,7 +29,7 @@ header {
 }
 
 .main-display img {
-  max-width: 200px;
+  max-width: 400px;
   height: auto;
   margin-bottom: 10px;
 }
@@ -111,6 +111,7 @@ header {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 .delete-button:hover {
@@ -128,9 +129,9 @@ header {
   max-height: 200px; /* Adjust based on content size */
 }
 
-/* Magnify effect */
+/* Magnify effect
 .main-display.magnify {
   transform: scale(1.2); /* Scale up the size */
   transition: transform 0.2s ease-in-out; /* Smooth transition */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Optional: Add some shadow for effect */
-}
+} */
