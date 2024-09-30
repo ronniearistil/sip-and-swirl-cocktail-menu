@@ -193,6 +193,28 @@ const setupDeleteListener = () => {
   });
 };
 
+// Like button and Rating 
+const likeAndRating = () => {
+  const likeButton = document.getElementById('like-button'); // Get Like button
+  const likeCountSpan = document.getElementById('like-count'); // Get Like count display
+  const ratingSelect = document.getElementById('rating'); // Get rating dropdown
+  const currentRatingSpan = document.getElementById('current-rating'); // Get rating display
+
+  let likeCount = 0; // Initialize like count
+  let currentRating = 0; // Initialize current rating
+
+  // Add event listener for Like button
+  likeButton.addEventListener('click', () => {
+      likeCount++; // Increment like count
+      likeCountSpan.textContent = `${likeCount} Likes`; // Update like count display
+  });
+
+  // Add event listener for Rating dropdown
+  ratingSelect.addEventListener('change', (event) => {
+      currentRating = event.target.value; // Get selected rating value
+      currentRatingSpan.textContent = `Rated: ${currentRating} Stars`; // Update rating display
+  });
+};
 
 
 // Main function to initialize all features when the page is loaded
