@@ -26,6 +26,38 @@
     <div class="recipe-content" style="display: none;">
       <p id="recipe-display">Insert recipe here</p>
     </div>
+
+    <!-- Interaction section for Like, Rating, and Comment -->
+    <div id="cocktail-interaction" class="cocktail-interaction">
+      <button id="like-button">Like ❤️</button>
+      <span id="like-count">0 Likes</span>
+
+      <label for="rating">Rate this cocktail:</label>
+      <select id="rating">
+          <option value="1">1 Star</option>
+          <option value="2">2 Stars</option>
+          <option value="3">3 Stars</option>
+          <option value="4">4 Stars</option>
+          <option value="5">5 Stars</option>
+          <option value="6">6 Stars</option>
+          <option value="7">7 Stars</option>
+          <option value="8">8 Stars</option>
+          <option value="9">9 Stars</option>
+          <option value="10">10 Stars</option>
+      </select>
+      <span id="current-rating">Rated: 0 Stars</span>
+
+      <!-- Comment Section -->
+      <h3>Leave a Comment</h3>
+      <form id="comment-form">
+        <textarea id="comment-box" placeholder="Add your comment"></textarea>
+        <button type="submit" id="submit-comment">Submit Comment</button>
+      </form>
+      <h3>Comments:</h3>
+      <ul id="comment-list">
+        <!-- Comments will be dynamically added here -->
+      </ul>
+    </div>
   </div>
 
   <!-- Cocktails Menu Grid -->
@@ -52,10 +84,11 @@
     </form>
   </div>
 
-  <!-- Delete button -->
   <button id="delete-button" class="delete-button">Delete Cocktail</button>
 </body>
 </html>
+
+
 
 
 
