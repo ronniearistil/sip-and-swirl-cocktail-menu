@@ -31,7 +31,7 @@ const displayCocktails = () => {
       cocktails.forEach(cocktail => createCocktailImage(cocktail));
     
       // Automatically display details of the first cocktail
-      if (cocktails.length > 0) {
+      if (cocktails.length) {
         handleClick(cocktails[0]);
       }
     })
