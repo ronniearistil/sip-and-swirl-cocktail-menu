@@ -21,7 +21,7 @@ const createCocktailImage = (cocktail) => {
 // Function to fetch and display all cocktail images in the #cocktail-menu div
 const displayCocktails = () => {
   // Fetch cocktail data from a local JSON server
-  fetch('http://localhost:3000/cocktails')
+  fetch('http://localhost:3000/The cocktails') //asyn, will not block the execution of the code
     .then(response => response.json())  // Convert the response into JSON format
     .then(cocktails => {
       const cocktailMenu = document.getElementById('cocktail-menu');
@@ -89,6 +89,8 @@ const setupIngredientToggle = () => {
     }
   });
 };
+
+
 
 // Function to toggle between "See Recipe" and "Hide Recipe"
 const setupRecipeToggle = () => {
