@@ -183,15 +183,7 @@ const setupDeleteListener = () => {
       }
     }
 
-    // Clear the main display after deletion
-    document.querySelector('#cocktail-detail img').src = './images/default-placeholder.jpg';
-    document.querySelector('.name').textContent = 'Insert Name Here';
-    document.getElementById('ingredients-display').textContent = 'Insert Ingredients Here';
-    document.getElementById('recipe-display').textContent = 'Insert recipe here';
-
-    alert("Cocktail deleted successfully!");
-  });
-};
+   
 
 // Main function to initialize all features when the page is loaded
 const main = () => {
