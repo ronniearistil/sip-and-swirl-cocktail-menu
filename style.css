@@ -48,6 +48,16 @@ header {
   height: auto;
   margin-bottom: 10px;
 }
+/* Styling for the cocktail name */
+.name {
+  font-size: 1.8rem; /* Adjust size as needed */
+  font-weight: bolder; /* Makes the name bold */
+  margin-top: 5px; /* Adjusts space between the image and name */
+  margin-bottom: 15px; /* Reduce space between name and buttons */
+  text-align: center;
+  color: #333;
+  
+}
 
 /* Cocktails grid container */
 .grid-container {
