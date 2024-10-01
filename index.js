@@ -220,7 +220,7 @@ const setupInteractionListeners = () => {
 
   // Add functionality for "See Comments" button
   const toggleButton = document.getElementById('toggle-comments');
-  toggleButton.addEventListener('click', () => {
+toggleButton.addEventListener('click', () => {
     if (commentList.style.display === 'none') {
       commentList.style.display = 'block';
       toggleButton.textContent = 'Hide Comments';
@@ -228,7 +228,8 @@ const setupInteractionListeners = () => {
       commentList.style.display = 'none';
       toggleButton.textContent = 'See Comments';
     }
-  });
+});
+
 };
 
 // Main function to initialize core deliverables
