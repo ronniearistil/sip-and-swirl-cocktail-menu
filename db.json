@@ -6,7 +6,14 @@
       "restaurant": "La Cantina",
       "image": "./assets/cocktails/margarita.jpg",
       "rating": 8,
-      "comment": "A refreshing classic with a perfect balance of tangy and salty."
+      "comment": "A refreshing classic with a perfect balance of tangy and salty.",
+      "ingredients": [
+        {"name": "Tequila", "amount": "2 oz"},
+        {"name": "Triple Sec", "amount": "1 oz"},
+        {"name": "Lime Juice", "amount": "1 oz"},
+        {"name": "Salt", "amount": "Pinch (for the rim)"}
+      ],
+      "recipe": "Rub the rim of the glass with lime and dip it in Tajin or salt. Shake tequila, triple sec, and lime juice with ice. Strain into the glass and garnish with a lime wedge."
     },
     {
       "id": 2,
@@ -14,7 +21,14 @@
       "restaurant": "Whiskey Tavern",
       "image": "./assets/cocktails/old-fashioned.jpg",
       "rating": 9,
-      "comment": "Strong, smooth, and timeless. A whiskey lover's dream."
+      "comment": "Strong, smooth, and timeless. A whiskey lover's dream.",
+      "ingredients": [
+        {"name": "Bourbon", "amount": "2 oz"},
+        {"name": "Sugar", "amount": "1 tsp"},
+        {"name": "Angostura Bitters", "amount": "2 dashes"},
+        {"name": "Orange Peel", "amount": "1 twist"}
+      ],
+      "recipe": "Muddle the sugar and bitters in a glass. Add ice and pour in bourbon. Stir gently and garnish with an orange twist."
     },
     {
       "id": 3,
@@ -22,7 +36,14 @@
       "restaurant": "Cocktail Club",
       "image": "./assets/cocktails/cosmopolitan.jpg",
       "rating": 7,
-      "comment": "Chic and fruity, perfect for a night out!"
+      "comment": "Chic and fruity, perfect for a night out!",
+      "ingredients": [
+        {"name": "Vodka", "amount": "1.5 oz"},
+        {"name": "Triple Sec", "amount": "1 oz"},
+        {"name": "Cranberry Juice", "amount": "1 oz"},
+        {"name": "Lime Juice", "amount": "0.5 oz"}
+      ],
+      "recipe": "Shake all ingredients with ice and strain into a chilled martini glass. Garnish with a lime twist."
     },
     {
       "id": 4,
@@ -30,7 +51,13 @@
       "restaurant": "Martini Lounge",
       "image": "./assets/cocktails/martini.jpg",
       "rating": 8,
-      "comment": "Crisp and dry with a sophisticated edge."
+      "comment": "Crisp and dry with a sophisticated edge.",
+      "ingredients": [
+        {"name": "Gin", "amount": "2 oz"},
+        {"name": "Dry Vermouth", "amount": "0.5 oz"},
+        {"name": "Lemon Twist", "amount": "1 twist"}
+      ],
+      "recipe": "Stir gin and dry vermouth with ice, then strain into a chilled martini glass. Garnish with a lemon twist."
     },
     {
       "id": 5,
@@ -38,7 +65,14 @@
       "restaurant": "Bourbon & Rye",
       "image": "./assets/cocktails/manhattan.jpg",
       "rating": 9,
-      "comment": "Rich, complex, and perfectly balanced."
+      "comment": "Rich, complex, and perfectly balanced.",
+      "ingredients": [
+        {"name": "Rye Whiskey", "amount": "2 oz"},
+        {"name": "Sweet Vermouth", "amount": "1 oz"},
+        {"name": "Angostura Bitters", "amount": "2 dashes"},
+        {"name": "Cherry", "amount": "1 (for garnish)"}
+      ],
+      "recipe": "Stir rye whiskey, sweet vermouth, and bitters with ice. Strain into a chilled glass and garnish with a cherry."
     },
     {
       "id": 6,
@@ -46,7 +80,16 @@
       "restaurant": "The Gin Bar",
       "image": "./assets/cocktails/negroni.jpg",
       "rating": 8,
-      "comment": "A bitter yet refreshing aperitif."
+      "comment": "A bitter yet refreshing aperitif.",
+      "ingredients": [
+        {"name": "Gin", "amount": "1 oz"},
+        {"name": "Campari", "amount": "1 oz"},
+        {"name": "Sweet Vermouth", "amount": "1 oz"},
+        {"name": "Orange Slice", "amount": "1 slice (for garnish)"}
+      ],
+      "recipe": "Stir gin, Campari, and sweet vermouth with ice. Strain into a rocks glass filled with ice and garnish with an orange slice."
     }
   ]
 }
+
+
