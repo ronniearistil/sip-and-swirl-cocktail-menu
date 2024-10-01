@@ -164,6 +164,26 @@ const setupEditListener = () => {
     document.getElementById('recipe-display').textContent = newRecipe;  // Update recipe display
     document.querySelector('.ingredients').textContent = `Ingredients: ${newIngredients.join(', ')}`;  // Update ingredients display
 
+    // Like functionality for Edit Section
+const editLikeButton = document.getElementById('edit-like-button');
+const editLikeCount = document.getElementById('edit-like-count');
+let editLikes = 0;
+
+editLikeButton.addEventListener('click', (event) => {
+  event.preventDefault();  // Prevent default form behavior
+  editLikes++;
+  editLikeCount.textContent = `${editLikes} Likes`;
+});
+
+// Rating functionality for Edit Section
+const editRatingSelect = document.getElementById('edit-rating');
+const editCurrentRating = document.getElementById('edit-current-rating');
+
+editRatingSelect.addEventListener('change', (event) => {
+  const selectedRating = event.target.value;
+  editCurrentRating.textContent = `Rated: ${selectedRating} Stars`;
+});
+
     form.reset();  // Clear the form after submission
   });
 };
@@ -195,28 +215,51 @@ const setupDeleteListener = () => {
   });
 };
 
-// Like button and Rating 
-const likeAndRating = () => {
-  const likeButton = document.getElementById('like-button'); // Get Like button
-  const likeCountSpan = document.getElementById('like-count'); // Get Like count display
-  const ratingSelect = document.getElementById('rating'); // Get rating dropdown
-  const currentRatingSpan = document.getElementById('current-rating'); // Get rating display
+// Target the like button, like count, rating dropdown, and current rating display
+const likeButton = document.getElementById('like-button');
+const likeCount = document.getElementById('like-count');
+const ratingDropdown = document.getElementById('rating');
+const currentRating = document.getElementById('current-rating');
 
-  let likeCount = 0; // Initialize like count
-  let currentRating = 0; // Initialize current rating
+// const likeButton = document.getElementById('like-button');
+// let isLiked = false;
 
-  // Add event listener for Like button
-  likeButton.addEventListener('click', () => {
-      likeCount++; // Increment like count
-      likeCountSpan.textContent = `${likeCount} Likes`; // Update like count display
-  });
+// likeButton.addEventListener('click', () => {
+//     if (isLiked) {
+//         likeButton.classList.remove('liked');
+//     } else {
+//         likeButton.classList.add('liked');
+//     }
+//     isLiked = !isLiked;
+// });
 
-  // Add event listener for Rating dropdown
-  ratingSelect.addEventListener('change', (event) => {
-      currentRating = event.target.value; // Get selected rating value
-      currentRatingSpan.textContent = `Rated: ${currentRating} Stars`; // Update rating display
-  });
-};
+
+// Initially set the heart to gray and current rating to 0 Stars
+likeButton.style.color = 'gray';
+currentRating.textContent = 'Rated: 0 Stars';
+
+// Add click event listener to the like button
+likeButton.addEventListener('click', () => {
+  // Check the current color of the heart
+  if (likeButton.style.color === 'gray') {
+    // If it's gray, change it to red and increase the like count
+    likeButton.style.color = 'red';
+    likeCount.textContent = parseInt(likeCount.textContent) + 1 + ' Likes';
+  } else {
+    // If it's red, change it back to gray and decrease the like count
+    likeButton.style.color = 'gray';
+    likeCount.textContent = parseInt(likeCount.textContent) - 1 + ' Likes';
+  }
+});
+
+// Add change event listener to the rating dropdown
+ratingDropdown.addEventListener('change', () => {
+  // Get the selected rating from the dropdown
+  const selectedRating = ratingDropdown.value;
+  
+  // Update the current rating span with the selected rating
+  currentRating.textContent = `Rated: ${selectedRating} Star${selectedRating > 1 ? 's' : ''}`;
+});
 
 
 // Main function to initialize all features when the page is loaded
@@ -227,6 +270,10 @@ const main = () => {
   setupRecipeToggle();  // Add toggle functionality for recipes
   setupEditListener();  // Enable cocktail editing
   setupDeleteListener();  // Enable cocktail deletion
+
+
+// Explicitly set the initial color of the heart icon to grey
+likeButton.style.color = 'gray';
 };
 
 // Ensure that the DOM is fully loaded before running the main function

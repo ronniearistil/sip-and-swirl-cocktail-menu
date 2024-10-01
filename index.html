@@ -48,29 +48,38 @@
       <h4>Edit Cocktail</h4>
       <input type="text" id="edit-ingredients" placeholder="Edit Ingredients" required />
       <textarea id="edit-recipe" placeholder="Edit the recipe" required></textarea>
-      <input type="submit" value="Update" />
+      <!-- <input type="submit" value="Update" /> -->
+
+        <input type="text" id="edit-ingredients" placeholder="Edit Ingredients" required />
+        <textarea id="edit-recipe" placeholder="Edit the recipe" required></textarea>
+      
+        <!-- Cocktail Interaction -->
+        <div id="cocktail-interaction"></div>
+        
+        <!-- Like Button for Edit Section -->
+        <button id="like-button" class="unliked"><i class="fa fa-heart"></i></button>
+        <span id="like-count">0 Like</span>
+      
+        <!-- Rating System for Edit Section -->
+  
+        <label for="rating">Rate this cocktail:</label>
+        <select id="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <span id="current-rating">Rated: 0 Stars</span>
+      
+        <input type="submit" value="Update" />
     </form>
   </div>
-
-  <div id="cocktail-interaction">
-    <button id="like-button">Like ❤️</button>
-    <span id="like-count">0 Likes</span>
-
-    <label for="rating">Rate this cocktail:</label>
-    <select id="rating">
-        <option value="1">1 Star</option>
-        <option value="2">2 Stars</option>
-        <option value="3">3 Stars</option>
-        <option value="4">4 Stars</option>
-        <option value="5">5 Stars</option>
-        <option value="6">6 Star</option>
-        <option value="7">7 Stars</option>
-        <option value="8">8 Stars</option>
-        <option value="9">9 Stars</option>
-        <option value="10">10 Stars</option>
-    </select>
-    <span id="current-rating">Rated: 0 Stars</span>
-</div>
 
   <!-- Delete button -->
   <button id="delete-button" class="delete-button">Delete Cocktail</button>

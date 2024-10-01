@@ -134,3 +134,19 @@
     /* transition: transform 0.2s ease-in-out; /* Smooth transition */
     /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Optional: Add some shadow for effect */
 
+/* Default style for the heart */
+/* #like-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: gray; 
+}  */
+
+/* Default style for the heart */
+#like-button .fa-heart {
+    color: gray; /* Grey color by default */
+}
+.liked .fa-heart {
+    color: red; /* Turn red when liked */
+}
