@@ -20,20 +20,20 @@ const createCocktailImage = (cocktail) => {
 // Function to fetch and display all cocktail images in the #cocktail-menu div
 const displayCocktails = () => {
   fetch('http://localhost:3000/cocktails')
-    .then((response) => response.json())
-    .then((cocktails) => {
+    .then(response => response.json())
+    .then(cocktails => {
       const cocktailMenu = document.getElementById('cocktail-menu');
       cocktailMenu.innerHTML = ''; // Clear the menu
 
       // Loop through each cocktail and create images for them
-      cocktails.forEach((cocktail) => createCocktailImage(cocktail));
+      cocktails.forEach(cocktail => createCocktailImage(cocktail));
 
       // Automatically display the first cocktail's details
-      if (cocktails.length > 0) {
+      if (cocktails.length) {
         handleClick(cocktails[0]);
       }
     })
-    .catch((error) => console.error('Error fetching cocktails:', error));
+    .catch(error => console.error('Error fetching cocktails:', error));
 };
 
 // Function to display cocktail details when a cocktail image is clicked
@@ -43,7 +43,7 @@ const handleClick = (cocktail) => {
 
   // Combine ingredients and display them
   const ingredientsList = cocktail.ingredients
-    .map((item) => `${item.amount} ${item.name}`)
+    .map(item => `${item.amount} ${item.name}`)
     .join(', ');
   document.getElementById('ingredients-display').textContent = ingredientsList;
 
@@ -76,13 +76,9 @@ const setupIngredientToggle = () => {
   const ingredientsDiv = document.querySelector('.ingredients-content');
 
   button.addEventListener('click', () => {
-    if (ingredientsDiv.style.display === 'none' || !ingredientsDiv.style.display) {
-      ingredientsDiv.style.display = 'block';
-      button.textContent = 'Hide Ingredients';
-    } else {
-      ingredientsDiv.style.display = 'none';
-      button.textContent = 'See Ingredients';
-    }
+    const isHidden = ingredientsDiv.style.display === 'none' || !ingredientsDiv.style.display;
+    ingredientsDiv.style.display = isHidden ? 'block' : 'none';
+    button.textContent = isHidden ? 'Hide Ingredients' : 'See Ingredients';
   });
 };
 
@@ -92,13 +88,9 @@ const setupRecipeToggle = () => {
   const recipeDiv = document.querySelector('.recipe-content');
 
   button.addEventListener('click', () => {
-    if (recipeDiv.style.display === 'none' || !recipeDiv.style.display) {
-      recipeDiv.style.display = 'block';
-      button.textContent = 'Hide Recipe';
-    } else {
-      recipeDiv.style.display = 'none';
-      button.textContent = 'See Recipe';
-    }
+    const isHidden = recipeDiv.style.display === 'none' || !recipeDiv.style.display;
+    recipeDiv.style.display = isHidden ? 'block' : 'none';
+    button.textContent = isHidden ? 'Hide Recipe' : 'See Recipe';
   });
 };
 
@@ -111,7 +103,7 @@ const addSubmitListener = () => {
 
     // Get ingredients input and split by new lines (using '\n') to handle multi-line input
     const rawIngredients = document.getElementById('new-ingredients').value.split('\n');
-    const ingredients = rawIngredients.map((ingredientString) => {
+    const ingredients = rawIngredients.map(ingredientString => {
       const firstSpaceIndex = ingredientString.indexOf(' '); // Find the first space
       const amount = ingredientString.slice(0, firstSpaceIndex); // Get everything before the first space
       const name = ingredientString.slice(firstSpaceIndex + 1); // Get everything after the first space
@@ -252,3 +244,4 @@ const main = () => {
 
 // Ensure that the DOM is fully loaded before running the main function
 document.addEventListener('DOMContentLoaded', main);
+
