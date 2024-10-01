@@ -5,7 +5,7 @@ const createCocktailImage = (cocktail) => {
   const img = document.createElement('img');
   img.src = cocktail.image; // Use image path from JSON data
   img.alt = cocktail.name; // Set alt attribute to cocktail name
-  
+
   // Add a click event listener to show cocktail details when clicked
   img.addEventListener('click', () => handleClick(cocktail));
 
@@ -20,20 +20,20 @@ const createCocktailImage = (cocktail) => {
 // Function to fetch and display all cocktail images in the #cocktail-menu div
 const displayCocktails = () => {
   fetch('http://localhost:3000/cocktails')
-    .then(response => response.json())
-    .then(cocktails => {
+    .then((response) => response.json())
+    .then((cocktails) => {
       const cocktailMenu = document.getElementById('cocktail-menu');
       cocktailMenu.innerHTML = ''; // Clear the menu
-    
+
       // Loop through each cocktail and create images for them
-      cocktails.forEach(cocktail => createCocktailImage(cocktail));
-    
+      cocktails.forEach((cocktail) => createCocktailImage(cocktail));
+
       // Automatically display the first cocktail's details
       if (cocktails.length > 0) {
         handleClick(cocktails[0]);
       }
     })
-    .catch(error => console.error('Error fetching cocktails:', error));
+    .catch((error) => console.error('Error fetching cocktails:', error));
 };
 
 // Function to display cocktail details when a cocktail image is clicked
@@ -42,7 +42,9 @@ const handleClick = (cocktail) => {
   document.querySelector('.name').textContent = cocktail.name;
 
   // Combine ingredients and display them
-  const ingredientsList = cocktail.ingredients.map(item => `${item.amount} ${item.name}`).join(', ');
+  const ingredientsList = cocktail.ingredients
+    .map((item) => `${item.amount} ${item.name}`)
+    .join(', ');
   document.getElementById('ingredients-display').textContent = ingredientsList;
 
   // Display the recipe
@@ -54,9 +56,6 @@ const handleClick = (cocktail) => {
 
   // Reset toggle states for ingredients and recipe buttons
   resetToggles();
-
-  // Reset interaction section
-  resetInteractionSection();
 };
 
 // Function to reset toggle buttons for ingredients and recipe sections
@@ -69,14 +68,6 @@ const resetToggles = () => {
 
   document.querySelector('.ingredient-toggle').textContent = 'See Ingredients'; // Reset button text
   document.querySelector('.recipe-toggle').textContent = 'See Recipe'; // Reset button text
-};
-
-// Function to reset the interaction section (like, rating, comments)
-const resetInteractionSection = () => {
-  document.getElementById('like-count').textContent = '0 Likes';
-  document.getElementById('rating').value = '1';
-  document.getElementById('current-rating').textContent = 'Rated: 0 Stars';
-  document.getElementById('comment-list').innerHTML = ''; // Clear comment section
 };
 
 // Function to toggle between "See Ingredients" and "Hide Ingredients"
@@ -120,7 +111,7 @@ const addSubmitListener = () => {
 
     // Get ingredients input and split by new lines (using '\n') to handle multi-line input
     const rawIngredients = document.getElementById('new-ingredients').value.split('\n');
-    const ingredients = rawIngredients.map(ingredientString => {
+    const ingredients = rawIngredients.map((ingredientString) => {
       const firstSpaceIndex = ingredientString.indexOf(' '); // Find the first space
       const amount = ingredientString.slice(0, firstSpaceIndex); // Get everything before the first space
       const name = ingredientString.slice(firstSpaceIndex + 1); // Get everything after the first space
@@ -141,7 +132,7 @@ const addSubmitListener = () => {
 
     // Ensure all fields are filled out
     if (!newCocktail.name || !newCocktail.ingredients || !newCocktail.image || !newCocktail.recipe) {
-      alert("Please fill out all fields.");
+      alert('Please fill out all fields.');
       return;
     }
 
@@ -157,16 +148,25 @@ const setupEditListener = () => {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const cocktailId = form.dataset.id;
+
+    const cocktailId = form.dataset.id; // Get the ID of the cocktail being edited
+
+    // Get the new values from the form fields
+    const newIngredients = document.getElementById('edit-ingredients').value.split(', ');
+    const newRecipe = document.getElementById('edit-recipe').value;
+
+    // Ensure fields are filled before proceeding
+    if (!newIngredients || !newRecipe) {
+      alert('Please fill out both the ingredients and the recipe.');
+      return;
+    }
 
     // Update the displayed cocktail details in the DOM
-    const newRecipe = document.getElementById('edit-recipe').value;
-    const newIngredients = document.getElementById('edit-ingredients').value.split(', ');
-
+    document.querySelector('#ingredients-display').textContent = newIngredients.join(', ');
     document.getElementById('recipe-display').textContent = newRecipe;
-    document.querySelector('.ingredients').textContent = `Ingredients: ${newIngredients.join(', ')}`;
 
-    form.reset(); // Clear the edit form after submission
+    form.reset(); // Clear the form after submission
+    alert('Cocktail details updated successfully!');
   });
 };
 
@@ -193,11 +193,10 @@ const setupDeleteListener = () => {
     document.getElementById('ingredients-display').textContent = 'Insert Ingredients Here';
     document.getElementById('recipe-display').textContent = 'Insert recipe here';
 
-    alert("Cocktail deleted successfully!");
+    alert('Cocktail deleted successfully!');
   });
 };
 
-// *** New Feature: Like, Rate, and Comment ***
 // Function to handle liking a cocktail, rating, and leaving a comment
 const setupInteractionListeners = () => {
   const likeButton = document.getElementById('like-button');
@@ -226,6 +225,18 @@ const setupInteractionListeners = () => {
     commentList.appendChild(li);
     document.getElementById('comment-box').value = ''; // Clear the input box
   });
+
+  // Add functionality for "See Comments" button
+  const toggleButton = document.getElementById('toggle-comments');
+  toggleButton.addEventListener('click', () => {
+    if (commentList.style.display === 'none') {
+      commentList.style.display = 'block';
+      toggleButton.textContent = 'Hide Comments';
+    } else {
+      commentList.style.display = 'none';
+      toggleButton.textContent = 'See Comments';
+    }
+  });
 };
 
 // Main function to initialize core deliverables
@@ -241,5 +252,3 @@ const main = () => {
 
 // Ensure that the DOM is fully loaded before running the main function
 document.addEventListener('DOMContentLoaded', main);
-
-
