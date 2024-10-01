@@ -9,7 +9,22 @@ body {
   font-family: Arial, sans-serif;
   background-color: white;
   padding: 20px;
-  font-size: larger;
+  font-size: medium;
+}
+
+/* Style for the ingredients and recipe toggle buttons */
+.ingredient-toggle, .recipe-toggle {
+  background-color: #ff007f; /* Pink color */
+  color: white; /* White text */
+  border: ;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: medium;
+}
+
+.ingredient-toggle:hover, .recipe-toggle:hover {
+  background-color: #e60073; /* Darker pink on hover */
 }
 
 /* Header */
@@ -166,10 +181,11 @@ button#submit-comment {
   padding: 10px 15px;
   background-color: #ff007f;
   color: white;
-  border: none;
+  border: ;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
+  font-size: medium;
 }
 
 button#submit-comment:hover {
