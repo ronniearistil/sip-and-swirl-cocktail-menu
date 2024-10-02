@@ -1,6 +1,9 @@
 // MVP Deliverables
 
 // Helper function to create a cocktail image element and add it to the #cocktail-menu
+let cocktails = []; // Declare a global variable for storing the cocktails array
+
+// Helper function to create a cocktail image element and add it to the #cocktail-menu
 const createCocktailImage = (cocktail) => {
   const img = document.createElement('img');
   img.src = cocktail.image; // Use image path from JSON data
@@ -21,7 +24,8 @@ const createCocktailImage = (cocktail) => {
 const displayCocktails = () => {
   fetch('http://localhost:3000/cocktails')
     .then(response => response.json())
-    .then(cocktails => {
+    .then(data => {
+      cocktails = data; // Save the fetched cocktails globally
       const cocktailMenu = document.getElementById('cocktail-menu');
       cocktailMenu.innerHTML = ''; // Clear the menu
 
@@ -56,6 +60,11 @@ const handleClick = (cocktail) => {
 
   // Reset toggle states for ingredients and recipe buttons
   resetToggles();
+
+  // Reset like and rating fields for the new cocktail
+  document.getElementById('like-count').textContent = `${cocktail.likes || 0} Likes`;
+  document.getElementById('rating').value = cocktail.rating || 1;
+  document.getElementById('current-rating').textContent = `Rated: ${cocktail.rating || 1} Stars`;
 };
 
 // Function to reset toggle buttons for ingredients and recipe sections
@@ -162,7 +171,7 @@ const setupEditListener = () => {
   });
 };
 
-// *** STRETCH GOAL: Function to handle deleting a cocktail (non-persisted) ***
+// Function to handle deleting a cocktail (non-persisted)
 const setupDeleteListener = () => {
   const deleteButton = document.getElementById('delete-button');
 
@@ -193,34 +202,51 @@ const setupDeleteListener = () => {
 const setupInteractionListeners = () => {
   const likeButton = document.getElementById('like-button');
   const likeCountSpan = document.getElementById('like-count');
-  let likeCount = 0;
 
   likeButton.addEventListener('click', () => {
-    likeCount++;
-    likeCountSpan.textContent = `${likeCount} Likes`;
+    const cocktailId = document.getElementById('edit-cocktail').dataset.id;
+    const cocktail = cocktails.find(c => c.id == cocktailId); // Find the specific cocktail
+
+    // Increment the like count and update the DOM
+    cocktail.likes = (cocktail.likes || 0) + 1;
+    likeCountSpan.textContent = `${cocktail.likes} Likes`;
   });
 
   const ratingSelect = document.getElementById('rating');
   const currentRatingSpan = document.getElementById('current-rating');
+
   ratingSelect.addEventListener('change', (event) => {
+    const cocktailId = document.getElementById('edit-cocktail').dataset.id;
+    const cocktail = cocktails.find(c => c.id == cocktailId); // Find the specific cocktail
+
+    // Update the rating for the specific cocktail and the DOM
+    cocktail.rating = event.target.value;
     currentRatingSpan.textContent = `Rated: ${event.target.value} Stars`;
   });
 
+  // Comment form
   const commentForm = document.getElementById('comment-form');
   const commentList = document.getElementById('comment-list');
 
   commentForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent form submission from refreshing the page
     const commentBox = document.getElementById('comment-box').value;
+
+    // Ensure the comment box is not empty before adding the comment
+    if (commentBox.trim() === '') {
+      alert('Please enter a comment.');
+      return;
+    }
+
     const li = document.createElement('li');
     li.textContent = commentBox;
-    commentList.appendChild(li);
-    document.getElementById('comment-box').value = ''; // Clear the input box
+    commentList.appendChild(li); // Add the comment to the list
+    document.getElementById('comment-box').value = ''; // Clear the input box after submission
   });
 
   // Add functionality for "See Comments" button
   const toggleButton = document.getElementById('toggle-comments');
-toggleButton.addEventListener('click', () => {
+  toggleButton.addEventListener('click', () => {
     if (commentList.style.display === 'none') {
       commentList.style.display = 'block';
       toggleButton.textContent = 'Hide Comments';
@@ -228,8 +254,7 @@ toggleButton.addEventListener('click', () => {
       commentList.style.display = 'none';
       toggleButton.textContent = 'See Comments';
     }
-});
-
+  });
 };
 
 // Main function to initialize core deliverables
@@ -245,4 +270,3 @@ const main = () => {
 
 // Ensure that the DOM is fully loaded before running the main function
 document.addEventListener('DOMContentLoaded', main);
-
