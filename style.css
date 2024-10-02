@@ -33,6 +33,7 @@ button:hover {
   background-color: #e60073; /* Darker pink on hover */
 }
 
+/* Delete button styling */
 .delete-button {
   display: block;
   width: 100%;
@@ -61,6 +62,20 @@ textarea {
 
 textarea {
   resize: none;
+}
+
+/* Styling for "Create Cocktail" and "Update" buttons */
+input[type="submit"] {
+  background-color: #ff007f; /* Pink color */
+  color: white; /* White text */
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #e60073; /* Darker pink on hover */
 }
 
 /* Comment and interaction sections */
@@ -237,6 +252,7 @@ header {
   font-size: medium;
   margin-left: 10px;
 }
+
 
 
 /* Magnify effect
