@@ -199,6 +199,7 @@ const setupDeleteListener = () => {
 };
 
 // Function to handle liking a cocktail, rating, and leaving a comment
+// Function to handle liking a cocktail, rating, and leaving a comment
 const setupInteractionListeners = () => {
   const likeButton = document.getElementById('like-button');
   const likeCountSpan = document.getElementById('like-count');
@@ -256,6 +257,7 @@ const setupInteractionListeners = () => {
     }
   });
 };
+
 
 // Main function to initialize core deliverables
 const main = () => {

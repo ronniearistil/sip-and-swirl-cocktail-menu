@@ -25,11 +25,11 @@ button:hover {
 }
 
 /* Specific button styles */
-.ingredient-toggle, .recipe-toggle, #submit-comment {
+.ingredient-toggle, .recipe-toggle, #submit-comment, .comment-toggle {
   background-color: #ff007f; /* Pink color */
 }
 
-.ingredient-toggle:hover, .recipe-toggle:hover {
+.ingredient-toggle:hover, .recipe-toggle:hover, .comment-toggle:hover {
   background-color: #e60073; /* Darker pink on hover */
 }
 
@@ -110,6 +110,21 @@ button#submit-comment {
 
 button#submit-comment:hover {
   background-color: #e6006e;
+}
+
+/* Centered "See Comments" button */
+#toggle-comments {
+  display: block;
+  margin: 10px auto; /* This centers the button */
+  background-color: #ff007f;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#toggle-comments:hover {
+  background-color: #e60073;
 }
 
 /* Header */
@@ -206,10 +221,10 @@ header {
 /* Styling for Like Button and Like Count */
 #like-button {
   background-color: #b38b9f; /* Pink background */
-  color: #ffff8; /* Black text for the "Like" button */
+  color: black; /* Black text for the "Like" button */
   padding: 10px;
   border-radius: 10px;
-  border: ;
+  border: none;
   cursor: pointer;
 }
 
@@ -218,10 +233,12 @@ header {
 }
 
 #like-count {
-  color: rgb(3, 3, 3); /* White text for the like count */
+  color: black; /* Black text for the like count */
   font-size: medium;
   margin-left: 10px;
 }
+
+
 /* Magnify effect
 .main-display.magnify {
   transform: scale(1.2); /* Scale up the size */
