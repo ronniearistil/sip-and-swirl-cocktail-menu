@@ -203,7 +203,25 @@ header {
   max-height: 200px;
 }
 
+/* Styling for Like Button and Like Count */
+#like-button {
+  background-color: #b38b9f; /* Pink background */
+  color: #ffff8; /* Black text for the "Like" button */
+  padding: 10px;
+  border-radius: 10px;
+  border: ;
+  cursor: pointer;
+}
 
+#like-button:hover {
+  background-color: #ff007f; /* Darker pink on hover */
+}
+
+#like-count {
+  color: rgb(3, 3, 3); /* White text for the like count */
+  font-size: medium;
+  margin-left: 10px;
+}
 /* Magnify effect
 .main-display.magnify {
   transform: scale(1.2); /* Scale up the size */
