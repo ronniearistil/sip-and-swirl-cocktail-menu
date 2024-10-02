@@ -2,8 +2,6 @@
 
 // Helper function to create a cocktail image element and add it to the #cocktail-menu
 let cocktails = []; // Declare a global variable for storing the cocktails array
-
-// Helper function to create a cocktail image element and add it to the #cocktail-menu
 const createCocktailImage = (cocktail) => {
   const img = document.createElement('img');
   img.src = cocktail.image; // Use image path from JSON data
