@@ -253,6 +253,20 @@ header {
   margin-left: 10px;
 }
 
+/* Center the comment list under the "See/Hide Comments" button */
+#comment-list {
+  text-align: center; /* This centers the comments inside the list */
+  margin-top: 10px; /* Optional: Add some spacing from the button */
+}
+
+#comment-list li {
+  display: inline-block; /* This ensures that the list items stay centered */
+  padding: 10px;
+  background-color: #f1f1f1;
+  margin: 5px 0;
+  border-radius: 5px;
+  text-align: left; /* Keeps the text aligned within the comment box */
+}
 
 
 /* Magnify effect
