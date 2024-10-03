@@ -256,7 +256,6 @@ const setupInteractionListeners = () => {
   });
 };
 
-
 // Main function to initialize core deliverables
 const main = () => {
   displayCocktails();
