@@ -169,34 +169,49 @@ const setupEditListener = () => {
   });
 };
 
-// Function to handle deleting a cocktail (non-persisted)
+// Function to handle deleting a cocktail (non-persisted) with confirmation
 const setupDeleteListener = () => {
   const deleteButton = document.getElementById('delete-button');
 
   deleteButton.addEventListener('click', () => {
     const cocktailName = document.querySelector('.name').textContent;
+    const cocktailId = document.getElementById('delete-button').dataset.id;
 
-    // Remove the cocktail from the DOM
-    const cocktailMenu = document.getElementById('cocktail-menu');
-    const cocktailImages = cocktailMenu.getElementsByTagName('img');
-    for (let img of cocktailImages) {
-      if (img.alt === cocktailName) {
-        cocktailMenu.removeChild(img.parentElement); // Remove the parent div containing the image
-        break;
-      }
+    // Show a confirmation dialog
+    const userConfirmed = confirm(`Are you sure you want to delete the cocktail "${cocktailName}"?`);
+
+    if (userConfirmed) {
+      // Proceed with deletion if the user confirmed
+      fetch(`http://localhost:3000/cocktails/${cocktailId}`, {
+        method: 'DELETE',
+      })
+        .then(() => {
+          // Remove the cocktail from the DOM
+          const cocktailMenu = document.getElementById('cocktail-menu');
+          const cocktailImages = cocktailMenu.getElementsByTagName('img');
+          for (let img of cocktailImages) {
+            if (img.alt === cocktailName) {
+              cocktailMenu.removeChild(img.parentElement); // Remove the parent div containing the image
+              break;
+            }
+          }
+
+          // Clear the cocktail details section
+          document.querySelector('#cocktail-detail img').src = './images/default-placeholder.jpg';
+          document.querySelector('.name').textContent = 'Insert Name Here';
+          document.getElementById('ingredients-display').textContent = 'Insert Ingredients Here';
+          document.getElementById('recipe-display').textContent = 'Insert recipe here';
+
+          alert('Cocktail deleted successfully!');
+        })
+        .catch(error => console.error('Error deleting cocktail:', error));
+    } else {
+      // The user canceled the deletion
+      alert('Deletion canceled.');
     }
-
-    // Clear the cocktail details section
-    document.querySelector('#cocktail-detail img').src = './images/default-placeholder.jpg';
-    document.querySelector('.name').textContent = 'Insert Name Here';
-    document.getElementById('ingredients-display').textContent = 'Insert Ingredients Here';
-    document.getElementById('recipe-display').textContent = 'Insert recipe here';
-
-    alert('Cocktail deleted successfully!');
   });
 };
 
-// Function to handle liking a cocktail, rating, and leaving a comment
 // Function to handle liking a cocktail, rating, and leaving a comment
 const setupInteractionListeners = () => {
   const likeButton = document.getElementById('like-button');
@@ -263,7 +278,7 @@ const main = () => {
   setupIngredientToggle();
   setupRecipeToggle();
   setupEditListener();
-  setupDeleteListener();
+  setupDeleteListener(); // Updated delete listener with confirmation
   setupInteractionListeners(); // New interaction listeners
 };
 
