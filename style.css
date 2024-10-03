@@ -22,6 +22,7 @@ button {
 
 button:hover {
   background-color: #e60073; /* Darker shade for hover */
+  font-size: larger;
 }
 
 /* Specific button styles */
@@ -31,6 +32,7 @@ button:hover {
 
 .ingredient-toggle:hover, .recipe-toggle:hover, .comment-toggle:hover {
   background-color: #e60073; /* Darker pink on hover */
+  font-size: larger;
 }
 
 /* Delete button styling */
@@ -120,7 +122,7 @@ button#submit-comment {
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
-  font-size: medium;
+  font-size: large;
 }
 
 button#submit-comment:hover {
@@ -134,7 +136,8 @@ button#submit-comment:hover {
   background-color: #ff007f;
   color: white;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 20px;
+  font-size: large;
   cursor: pointer;
 }
 
@@ -236,7 +239,7 @@ header {
 /* Styling for Like Button and Like Count */
 #like-button {
   background-color: #b38b9f; /* Pink background */
-  color: black; /* Black text for the "Like" button */
+  color: rgb(237, 227, 227); /* Black text for the "Like" button */
   padding: 10px;
   border-radius: 10px;
   border: none;
