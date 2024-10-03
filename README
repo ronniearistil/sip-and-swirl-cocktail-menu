@@ -1,0 +1,76 @@
+Sip & Swirl Cocktail Menu
+
+Description:
+The Sip & Swirl Cocktail Menu is an interactive web application where users can view, rate, comment, and manage various cocktail recipes. The application fetches cocktail data from an API and dynamically displays it on the page. Users can explore different cocktails, view ingredients and recipes, add new cocktails, edit details, and leave comments or rate their favorite drinks.
+
+Learning Goals:
+Access API Data: Fetch cocktail data using a GET request and display it dynamically on the webpage.
+Event Handling: Listen to user interactions such as clicking on cocktails, toggling details, adding comments, and rating cocktails.
+DOM Manipulation: Dynamically update the DOM to show cocktail details, manage interactions, and display new cocktail entries.
+Form Handling: Implement functionality to add and edit cocktail recipes via user input forms.
+Basic Data Management: Handle non-persisted interactions such as liking, commenting, editing, and deleting cocktails.
+
+Features:
+Cocktail Display: Displays a grid of cocktail images. Clicking on an image shows details like ingredients and the recipe.
+Add Cocktails: Users can create new cocktails by submitting a form with a name, ingredients, image, and recipe.
+Edit Cocktails: Users can edit the ingredients and recipe of a selected cocktail (non-persisted).
+Delete Cocktails: Users can delete a cocktail from the menu (non-persisted).
+Interactions: Users can like a cocktail, rate it, and leave comments.
+Toggle Ingredients/Recipe: Toggle buttons to hide and show cocktail ingredients or recipes.
+
+Project Structure:
+HTML (index.html): The main structure and layout of the webpage, including the forms for adding and editing cocktails, and sections for displaying the cocktail details.
+JavaScript (index.js): Contains the logic for fetching data from the API, dynamically updating the DOM, and handling user interactions like adding new cocktails, commenting, and rating.
+CSS (style.css): Defines the styles for the webpage, including layout, colors, and grid structure.
+
+API:
+The project uses the API serving cocktail data at http://localhost:3000/cocktails. Each cocktail object in the API should have the following structure:
+{
+  "id": 1,
+  "name": "Margarita",
+  "image": "./images/margarita.jpg",
+  "ingredients": [
+    { "amount": "2 oz", "name": "Tequila" },
+    { "amount": "1 oz", "name": "Lime Juice" },
+    { "amount": "1 oz", "name": "Cointreau" }
+  ],
+  "recipe": "Shake ingredients with ice and strain into a salt-rimmed glass."
+}
+
+Example API Endpoints
+GET /cocktails: Fetches the list of all cocktails.
+POST /cocktails: Adds a new cocktail .\
+PATCH /cocktails/
+: Edits a cocktail (handled locally).
+DELETE /cocktails/
+: Deletes a cocktail (handled locally).
+
+How to Use
+View Cocktails: Upon loading the page, all available cocktails will be displayed. Clicking on any cocktail image will reveal its details.
+Like and Rate: Use the "Like" button to like a cocktail and rate it using the dropdown.
+Add a Cocktail: Fill in the "Add New Cocktail" form with a name, ingredients, image, and recipe. Click "Create Cocktail" to add it to the menu.
+Edit a Cocktail: Use the "Edit Cocktail" form to update the selected cocktail's ingredients and recipe.
+Delete a Cocktail: Click the "Delete Cocktail" button to remove a cocktail from the menu.
+Leave a Comment: Use the comment form to submit a comment about a cocktail. You can also toggle the visibility of the comments.
+Installation and Setup
+Clone the repository:
+
+git clone https://github.com/your-username/sip-and-swirl.git
+cd sip-and-swirl
+
+Run the local JSON server.
+
+json-server --watch db.json
+
+Open index.html in your browser.
+Technologies Used
+HTML: Structuring the content of the application.
+CSS: Styling the layout and design.
+JavaScript: Handling dynamic content, user interactions, and API requests.
+JSON Server: Used as a local backend to simulate an API.
+
+Images References:
+Cosmopolitan Image: ShutterStock
+Manhattan Image: Raw Pixel
+Margarita Image: FreePik
+Negroni Image: FreePik

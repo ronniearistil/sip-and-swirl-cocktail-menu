@@ -1,68 +1,63 @@
 // MVP Deliverables
 
-// Helper function to create a cocktail image element and add it to the #cocktail-menu
 let cocktails = []; // Declare a global variable for storing the cocktails array
+
+// Helper function to create a cocktail image element and add it to the #cocktail-menu
 const createCocktailImage = (cocktail) => {
   const img = document.createElement('img');
   img.src = cocktail.image; // Use image path from JSON data
-  img.alt = cocktail.name; // Set alt attribute to cocktail name
+  img.alt = cocktail.name;
 
   // Add a click event listener to show cocktail details when clicked
   img.addEventListener('click', () => handleClick(cocktail));
 
-  // Append the cocktail image to a grid box and then to the #cocktail-menu div
   const cocktailBox = document.createElement('div');
   cocktailBox.classList.add('cocktail-box');
   cocktailBox.appendChild(img);
 
   document.getElementById('cocktail-menu').appendChild(cocktailBox);
 };
-
-// Function to fetch and display all cocktail images in the #cocktail-menu div
+// Fetch all cocktails and display them
 const displayCocktails = () => {
   fetch('http://localhost:3000/cocktails')
-    .then(response => response.json())
-    .then(data => {
-      cocktails = data; // Save the fetched cocktails globally
+    .then((response) => response.json())
+    .then((data) => {
+      cocktails = data;
       const cocktailMenu = document.getElementById('cocktail-menu');
       cocktailMenu.innerHTML = ''; // Clear the menu
 
-      // Loop through each cocktail and create images for them
-      cocktails.forEach(cocktail => createCocktailImage(cocktail));
+      cocktails.forEach((cocktail) => createCocktailImage(cocktail));
 
       // Automatically display the first cocktail's details
       if (cocktails.length) {
         handleClick(cocktails[0]);
       }
     })
-    .catch(error => console.error('Error fetching cocktails:', error));
+    .catch((error) => console.error('Error fetching cocktails:', error));
 };
 
-// Function to display cocktail details when a cocktail image is clicked
+// Function to display cocktail details when clicked
 const handleClick = (cocktail) => {
   document.querySelector('#cocktail-detail img').src = cocktail.image;
   document.querySelector('.name').textContent = cocktail.name;
 
-  // Combine ingredients and display them
-  const ingredientsList = cocktail.ingredients
-    .map(item => `${item.amount} ${item.name}`)
+  // Combine and display ingredients
+  document.getElementById('ingredients-display').textContent = cocktail.ingredients
+    .map((item) => `${item.amount} ${item.name}`)
     .join(', ');
-  document.getElementById('ingredients-display').textContent = ingredientsList;
 
-  // Display the recipe
+  // Display recipe
   document.getElementById('recipe-display').textContent = cocktail.recipe;
 
   // Set the cocktail ID for edit and delete actions
   document.getElementById('edit-cocktail').dataset.id = cocktail.id;
   document.getElementById('delete-button').dataset.id = cocktail.id;
 
-  // Reset toggle states for ingredients and recipe buttons
-  resetToggles();
+  // Display comments related to this cocktail
+  displayCommentsForCocktail(cocktail);
 
-  // Reset like and rating fields for the new cocktail
-  document.getElementById('like-count').textContent = `${cocktail.likes || 0} Likes`;
-  document.getElementById('rating').value = cocktail.rating || 1;
-  document.getElementById('current-rating').textContent = `Rated: ${cocktail.rating || 1} Stars`;
+  // Reset UI toggles
+  resetToggles();
 };
 
 // Function to reset toggle buttons for ingredients and recipe sections
@@ -106,41 +101,50 @@ const addSubmitListener = () => {
   const form = document.getElementById('new-cocktail');
 
   form.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent page reload
+    event.preventDefault();
 
-    // Get ingredients input and split by new lines (using '\n') to handle multi-line input
+    // Create ingredients array
     const rawIngredients = document.getElementById('new-ingredients').value.split('\n');
-    const ingredients = rawIngredients.map(ingredientString => {
-      const firstSpaceIndex = ingredientString.indexOf(' '); // Find the first space
-      const amount = ingredientString.slice(0, firstSpaceIndex); // Get everything before the first space
-      const name = ingredientString.slice(firstSpaceIndex + 1); // Get everything after the first space
+    const ingredients = rawIngredients.map((ingredientString) => {
+      const firstSpaceIndex = ingredientString.indexOf(' ');
+      const amount = ingredientString.slice(0, firstSpaceIndex);
+      const name = ingredientString.slice(firstSpaceIndex + 1);
       return { name, amount };
     });
 
-    // Get the file input and create an object URL for the image
+    // Create new cocktail object
     const imageFile = document.getElementById('new-image').files[0];
     const imageUrl = URL.createObjectURL(imageFile);
 
-    // Create a new cocktail object
     const newCocktail = {
       name: document.getElementById('new-name').value,
-      ingredients: ingredients, // Use the structured ingredients array
-      image: imageUrl, // Use the object URL as the image source
+      ingredients: ingredients,
+      image: imageUrl,
       recipe: document.getElementById('new-recipe').value,
+      likes: 0,
+      rating: 1,
+      comments: []
     };
 
-    // Ensure all fields are filled out
     if (!newCocktail.name || !newCocktail.ingredients || !newCocktail.image || !newCocktail.recipe) {
       alert('Please fill out all fields.');
       return;
     }
 
-    // Add the new cocktail image to the menu
-    createCocktailImage(newCocktail);
-    form.reset(); // Clear the form
+    // POST request to add a new cocktail
+    fetch('http://localhost:3000/cocktails', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newCocktail),
+    })
+      .then((response) => response.json())
+      .then((savedCocktail) => {
+        createCocktailImage(savedCocktail);
+        form.reset(); // Clear the form
+      })
+      .catch((error) => console.error('Error adding cocktail:', error));
   });
 };
-
 // Function to handle editing a cocktail's recipe and ingredients (non-persisted)
 const setupEditListener = () => {
   const form = document.getElementById('edit-cocktail');
@@ -284,3 +288,5 @@ const main = () => {
 
 // Ensure that the DOM is fully loaded before running the main function
 document.addEventListener('DOMContentLoaded', main);
+
+

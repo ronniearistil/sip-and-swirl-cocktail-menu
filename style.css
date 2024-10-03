@@ -271,6 +271,9 @@ header {
   text-align: left; /* Keeps the text aligned within the comment box */
 }
 
+.main-display {
+  transition: opacity 0.2s ease-in-out; /* Example of transition */
+}
 
 /* Magnify effect
 .main-display.magnify {
