@@ -173,21 +173,6 @@
       ],
       "recipe": "Stir gin, Campari, and sweet vermouth with ice. Strain into a rocks glass filled with ice and garnish with an orange slice.",
       "likes": 2
-    },
-    {
-      "id": "d2dc",
-      "name": "Expresso Martini",
-      "ingredients": [
-        {
-          "name": "oz vodka 0.5 oz coffee liqueur (like Kahlúa) 1 oz freshly brewed espresso (chilled) 0.5 oz simple syrup (optional, for sweetness) Ice (for shaking) 3 coffee beans (for garnish)",
-          "amount": "2"
-        }
-      ],
-      "image": "blob:http://127.0.0.1:5502/a3defdc5-a4a6-4d4c-aeba-c3e0de9e5f1f",
-      "recipe": "2 oz vodka 0.5 oz coffee liqueur (like Kahlúa) 1 oz freshly brewed espresso (chilled) 0.5 oz simple syrup (optional, for sweetness) Ice (for shaking) 3 coffee beans (for garnish)",
-      "likes": 0,
-      "rating": 1,
-      "comments": []
     }
   ]
 }
